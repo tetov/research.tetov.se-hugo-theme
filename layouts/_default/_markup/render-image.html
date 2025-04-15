@@ -1,18 +1,27 @@
-<a href="{{ .Destination | safeURL }}"
-   class="glightbox"
-   data-gallery="{{ .Page.File.UniqueID }}"
-   {{- if and .Title .PlainText -}}
-    data-title="{{ .Title }}"
-    data-description="{{ .PlainText }}"
-   {{- else -}}
-    data-title="{{ if .PlainText }}{{ .PlainText }}{{ else }}{{ .Title | default "" }}{{ end }}"
-   {{- end -}}
->
-    <img src ="{{ .Destination | safeURL }}"
-         loading="lazy"
-         decoding="async"
-         style="border-radius: 5px; max-width: 100%"
-         {{- with .Title }} title="{{ . }}"{{ end -}}
-         alt="{{ if .PlainText }}{{ .PlainText }}{{ else }}{{ .Title | default "" }}{{ end }}"
-    />
-</a>
+<figure>
+  <a href="{{ .Destination | safeURL }}"
+     class="glightbox"
+     data-gallery="{{ .Page.File.UniqueID }}"
+     {{- if and .Title .PlainText -}}
+      data-title="{{ .Title }}"
+      data-description="{{ .PlainText }}"
+     {{- else -}}
+      data-title="{{ if .PlainText }}{{ .PlainText }}{{ else }}{{ .Title | default "" }}{{ end }}"
+     {{- end -}}
+  >
+      <img src="{{ .Destination | safeURL }}"
+           loading="lazy"
+           decoding="async"
+           style="border-radius: 5px; max-width: 100%"
+           {{- with .Title }} title="{{ . }}"{{ end -}}
+           {{ if .Text }}
+             aria-labelledby="figcaption-{{ $.Destination | md5 }}"
+           {{ else }}
+             alt="{{ .Title | default "Image" }}"
+           {{ end }}
+      />
+  </a>
+  {{- with .Text }}
+  <figcaption id="figcaption-{{ $.Destination | md5 }}">{{ . | safeHTML }}</figcaption>
+  {{ end }}
+</figure>
