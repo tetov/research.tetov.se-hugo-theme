@@ -39,6 +39,23 @@
   font-size: 0.9em;
   color: #555;
 }
+
+/* Handle empty paragraphs */
+.img-gallery > p:empty {
+  display: none;
+}
+
+/* Handle paragraphs that only contain whitespace */
+.img-gallery > p:blank {
+  display: none;
+}
+
+/* Fallback for browsers that don't support :blank */
+.img-gallery > p {
+  margin: 0;
+  padding: 0;
+  min-height: 0;
+}
 </style>
 <script>
  document.addEventListener('DOMContentLoaded', function() {
