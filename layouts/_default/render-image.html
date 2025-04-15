@@ -1,17 +1,18 @@
 <a href="{{ .Destination | safeURL }}"
    class="glightbox"
    data-gallery="{{ .Page.File.UniqueID }}"
-   {{- if or .Title .PlainText }}
-    data-glightbox="title:{{ .Title | default "" }};description:{{ .PlainText | default "" }}"
-   {{ end -}}
+   {{- if and .Title .PlainText -}}
+    data-title="{{ .Title }}"
+    data-description="{{ .PlainText }}"
+   {{- else -}}
+    data-title="{{ if .PlainText }}{{ .PlainText }}{{ else }}{{ .Title | default "" }}{{ end }}"
+   {{- end -}}
 >
     <img src ="{{ .Destination | safeURL }}"
          loading="lazy"
          decoding="async"
          style="border-radius: 5px; max-width: 100%"
-         alt="{{ .PlainText | default (.Title | default "") }}"
-         {{- with .Title }}
-            title="{{ . }}"
-         {{ end -}}
+         {{- with .Title }} title="{{ . }}"{{ end -}}
+         alt="{{ if .PlainText }}{{ .PlainText }}{{ else }}{{ .Title | default "" }}{{ end }}"
     />
 </a>
