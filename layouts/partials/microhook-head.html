@@ -8,55 +8,12 @@
     href="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/css/glightbox.min.css"
     integrity="sha256-bT9i1NF5afnHDpQ4z2cQBHJQGehoEj8uvClaAG+NXS0="
     crossorigin="anonymous">
-<style>
-.img-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
-  align-items: start;
-}
-
-.img-gallery > figure {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.img-gallery > figure > a {
-  flex: 1;
-  display: flex;
-}
-
-.img-gallery > figure > a > img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.img-gallery > figure > figcaption {
-  margin-top: 8px;
-  text-align: center;
-  font-size: 0.9em;
-  color: #555;
-}
-
-/* Handle empty paragraphs */
-.img-gallery > p:empty {
-  display: none;
-}
-
-/* Handle paragraphs that only contain whitespace */
-.img-gallery > p:blank {
-  display: none;
-}
-
-/* Fallback for browsers that don't support :blank */
-.img-gallery > p {
-  margin: 0;
-  padding: 0;
-  min-height: 0;
-}
-</style>
+<link
+    rel="stylesheet"
+    href=""
+>
+{{/* Tweaks goes after tiny theme */}}
+<link rel="stylesheet" href="{{ "css/tweaks.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
 <script>
  document.addEventListener('DOMContentLoaded', function() {
      const lightbox = GLightbox({
