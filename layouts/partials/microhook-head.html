@@ -1,0 +1,32 @@
+<script
+    src="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/js/glightbox.min.js"
+    integrity="sha256-xnxZzfmAeTsCFsnenG6/aIQYg4girx5QsJQ546oon/M="
+    crossorigin="anonymous">
+</script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/css/glightbox.min.css"
+    integrity="sha256-bT9i1NF5afnHDpQ4z2cQBHJQGehoEj8uvClaAG+NXS0="
+    crossorigin="anonymous">
+<style>
+.img-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 10px;
+  align-items: center;
+}
+
+.img-gallery > p {
+  margin-block: 0em;
+}
+</style>
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+     const lightbox = GLightbox({
+         touchNavigation: true,
+         touchFollowAxis: true,
+         keyboardNavigation: true,
+         closeButton: true
+     });
+ });
+</script>
